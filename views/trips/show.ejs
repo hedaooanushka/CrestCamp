@@ -1,0 +1,24 @@
+<%- include ("../partials/header") %>
+<div class="container" style="padding-top: 80px;">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="thumbnail">
+                <div class="caption-full">
+					          <h4 class="pull-right">$<%= trip.cost %>/night</h4>
+                    <h4><a><%=trip.name%></a></h4>
+                    <p style="font-size: 16px;"><%= trip.description %></p>
+                    <% if(currentUser && trip.author.id.equals(currentUser._id)){ %>
+                        <a class="btn btn-xs btn-warning" href="/trips/<%= trip._id %>/edit">Edit</a>
+                        <form id="delete-form" action="/trips/<%= trip._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-danger">Delete</button>
+                        </form>
+                    <% }%><br>
+                    <a href="/trips">Home Page</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<%- include ("../partials/footer") %>

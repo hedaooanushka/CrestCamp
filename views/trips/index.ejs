@@ -1,0 +1,47 @@
+<%- include ("../partials/header") %>
+
+<div class="well">
+    <div class="row" style="margin-top: 60px;">
+        <div class="col-md-12">
+            <h1 style="text-align: center">Trips</h1>
+            <div class="thumbnail" style="padding-left: 30px;">
+                <h3>Campground Locations</h3>
+                <form action="/trips" method="GET" class="form-inline">
+                    <div class="form-group">
+                        <input name="search" type="text" placeholder="I wanna go camping near...." class="form-control"><br><br>
+                        <input type="submit" value="Search" class="btn btn-default">
+                    </div>
+                </form>
+                <form action="/trips/new" method="GET" class="form-inline">
+                    <div class="form-group">
+                        <input type="submit" value="New Trip" class="btn btn-default">
+                    </div>
+                </form>
+                <br>
+                <br>
+                <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+                    <% trips.forEach(function(trip){ %>
+                        <div class="col-lg-3">
+                            <div class="thumbnail">
+                               <div class="caption">
+                                   <h4><%= trip.destination %></h4>
+                                   <h5>Driver Name: <%= trip.drivername %></h5>
+                                   <h5>Driver Phone: <%= trip.driverno %></h5>
+                                   <h5>Driver Email: <%= trip.driveremail %></h5>
+                                   <h5>Car Model: <%= trip.carmodel %></h5>
+                                   <h5>No. of people: <%= trip.people %></h5>
+                                   <h5>Cost: <%= trip.cost %></h5>
+                               </div>
+                               <p>
+                                   <a href="/trips/<%= trip._id %>" class="btn btn-primary">See Details</a>
+                               </p>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include ("../partials/footer") %>
